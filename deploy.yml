@@ -5,6 +5,10 @@ trigger:
 
 pool:
   name: Default
+
+  variables:
+  AZP_AGENT_CLEANUP_PSMODULES_IN_POWERSHELL: 'true'
+  
   vmImage: 'windows-latest'
 
 steps:
