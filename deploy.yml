@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  tf_version: '1.5.0'
+  azure_subscription: 'b1a16b61-64da-4d11-b76c-40be3788f709'
+
+steps:
+
+# Install Terraform
+- task: UseTerraform@0
+  inputs:
+    version: $(tf_version)
+
+# Terraform Init
+- script: terraform init
+  displayName: 'Terraform Init'
+
+# Terraform Plan
+- script: terraform plan -out=tfplan
+  displayName: 'Terraform Plan'
+
+# Terraform Apply
+- script: terraform apply -auto-approve tfplan
+  displayName: 'Terraform Apply'
+
+# Output VM Public IP
+- script: |
+    echo "VM Public IP: $(terraform output -raw vm_public_ip)"
+  displayName: 'Output VM Public IP'
