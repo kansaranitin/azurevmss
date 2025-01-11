@@ -8,10 +8,10 @@ pool:
 
 steps:
 - script: |
-# Download and install Packer
-wget https://releases.hashicorp.com/packer/1.10.2/packer_1.10.2_linux_amd64.zip
-unzip packer_1.10.2_linux_amd64.zip
-sudo mv packer /usr/local/bin/
+    # Download and install Packer
+    wget https://releases.hashicorp.com/packer/1.10.2/packer_1.10.2_linux_amd64.zip
+    unzip packer_1.10.2_linux_amd64.zip
+    sudo mv packer /usr/local/bin/
 displayName: 'Install Packer'
 
 - script: |
@@ -20,6 +20,6 @@ displayName: 'Install Packer'
 displayName: 'Initialize Packer Project'
 
 script: |
-# Build virtual machine image with Packer using WinRM 
-packer build windows-vm.pkr.hcl
+  # Build virtual machine image with Packer using WinRM 
+  packer build windows-vm.pkr.hcl
 displayName: 'Build Virtual Machine Image'
