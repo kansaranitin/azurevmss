@@ -1,19 +1,13 @@
-trigger:
-  branches:
-    include:
-      - main
+# This is a PowerShell script for initializing Windows VMSS
+$ErrorActionPreference = "Stop"
 
-pool:
-  name: Default
-  vmImage: 'windows-latest'
+# Install necessary packages and updates
+Write-Host "Updating Windows packages..."
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 
-steps:
-   - script: |
-      # Initialize Packer project and install required plugins
-      packer init windows-vm.pkr.hcl
-    displayName: 'Initialize Packer Project'
+# Install IIS Web Server (example)
+Write-Host "Installing IIS..."
+Install-WindowsFeature -Name Web-Server
 
-  - script: |
-      # Build virtual machine image with Packer using WinRM 
-      packer build windows-vm.pkr.hcl
-    displayName: 'Build Virtual Machine Image'
+# Other custom configurations or applications can be added here
+Write-Host "Initialization script completed."
