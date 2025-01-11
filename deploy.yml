@@ -12,14 +12,14 @@ steps:
     wget https://releases.hashicorp.com/packer/1.10.2/packer_1.10.2_linux_amd64.zip
     unzip packer_1.10.2_linux_amd64.zip
     sudo mv packer /usr/local/bin/
- displayName: 'Install Packer'
+  displayName: 'Install Packer'
 
 - script: |
     # Initialize Packer project and install required plugins
     packer init windows-vm.pkr.hcl
- displayName: 'Initialize Packer Project'
+  displayName: 'Initialize Packer Project'
 
 - script: |
   # Build virtual machine image with Packer using WinRM 
   packer build windows-vm.pkr.hcl
- displayName: 'Build Virtual Machine Image'
+  displayName: 'Build Virtual Machine Image'
