@@ -5,21 +5,10 @@ trigger:
 
 pool:
   name: Default
-
-  variables:
-  AZP_AGENT_CLEANUP_PSMODULES_IN_POWERSHELL: 'true'
-  
   vmImage: 'windows-latest'
 
 steps:
-  - script: |
-      # Download and install Packer
-      wget https://releases.hashicorp.com/packer/1.10.2/packer_1.10.2_linux_amd64.zip
-      unzip packer_1.10.2_linux_amd64.zip
-      sudo mv packer /usr/local/bin/
-    displayName: 'Install Packer'
-
-  - script: |
+   - script: |
       # Initialize Packer project and install required plugins
       packer init windows-vm.pkr.hcl
     displayName: 'Initialize Packer Project'
