@@ -1,3 +1,6 @@
+# This is a PowerShell script for initializing Windows VMSS
+$ErrorActionPreference = "Stop"
+
 # Install necessary packages and updates
 Write-Host "Updating Windows packages..."
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
